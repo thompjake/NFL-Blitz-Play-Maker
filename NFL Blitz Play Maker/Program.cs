@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace howto_line_editor_snapgrid
+namespace NFLBlitzFans.PlayMaker
 {
     static class Program
     {

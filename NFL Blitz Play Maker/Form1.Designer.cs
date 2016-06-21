@@ -1,6 +1,6 @@
 ﻿
 using NFLBlitzFans.PlayMaker.Controls;
-namespace howto_line_editor_snapgrid
+namespace NFLBlitzFans.PlayMaker
 {
     partial class Form1
     {

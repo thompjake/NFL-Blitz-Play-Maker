@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 using System.Drawing.Drawing2D;
 
-namespace howto_line_editor_snapgrid
+namespace NFLBlitzFans.PlayMaker
 {
     public partial class Form1 : Form
     {
