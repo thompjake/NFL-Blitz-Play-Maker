@@ -66,9 +66,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ActionIconPathFactory.cs" />
+    <Compile Include="Factories\ActionIconPathFactory.cs" />
+    <Compile Include="Helpers\MemoryPackReadWrite.cs" />
     <Compile Include="Models\BlitzActionEnum.cs" />
+    <Compile Include="Models\BlitzPlay.cs" />
     <Compile Include="Models\BlitzPlayer.cs" />
+    <Compile Include="Models\PlayBook.cs" />
+    <Compile Include="Models\PlayBookFormat\MemoryPack.cs" />
+    <Compile Include="Models\PlayBookFormat\NFLBlitz2kMemoryPack.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -126,6 +131,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
