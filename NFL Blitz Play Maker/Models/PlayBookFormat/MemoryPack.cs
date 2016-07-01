@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NFLBlitzFans.PlayMaker.Models.PlayBookFormat
 {
-    abstract class MemoryPack
+    public abstract class MemoryPack
     {
         //offset locations 
         abstract public long PlayBookNameOffset { get; }

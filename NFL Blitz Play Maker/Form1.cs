@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Drawing.Drawing2D;
+using NFLBlitzFans.PlayMaker.Helpers;
+using NFLBlitzFans.PlayMaker.Models.PlayBookFormat;
 
 namespace NFLBlitzFans.PlayMaker
 {
@@ -17,6 +19,13 @@ namespace NFLBlitzFans.PlayMaker
         {
             InitializeComponent();
            
+        }
+
+        private void loadPlaybookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Load MPK
+            MemoryPackReadWrite memoryPackReader = new MemoryPackReadWrite();
+            memoryPackReader.ReadMemoryPackPlays(@"C:\Program Files (x86)\Project64 1.6\Save\blitz2k.mpk", new NFLBlitz2kMemoryPack());
         }
     }
 }

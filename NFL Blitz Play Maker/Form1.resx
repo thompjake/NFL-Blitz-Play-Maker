@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="picCanvas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -262,11 +265,11 @@
         dNruKu32bN3+0cHZ80LbaTttp+20g+3LZmZmZvb4rv/GuNB22tuzdftHB2fPC22n7bSdttMOHKfTdtpO
         22k7bafttAPH6bSdttN22k7baTvtwHE6bafttJ2203baTjtwnE7baTttp+20nbbTDhyn03baTttpO22n
         7bQDx+m0nbbTdtpO22k77cBxOm2n7bSdttN22k47cJxO22k7bafttJ220w4cp9N22k7baTttp+20A8fp
-        tJ2203baTttpO+3AcTptp+20nbbTdtpOO3CcTttpO22n7bSdttMOHKfTdldpt2fr9o8Ozp4X2k7baTtt
-        px1sXzYzMzOzx3f9N8aFttPenq3bPzo4e15oO22n7bSdduA4nbbTdtpO22k7bacdOE6n7bSdttN22k7b
-        aQeO02k7bafttJ2203bageN02k7baTttp+20nXbgOJ2203baTttpO22nHThOp+20nbbTdtpO22kHjtNp
-        O22n7bSdttN22oHjdNpO22k7bafttJ124DidttN22k7baTttpx04TqfttJ2203baTttpB47TaTttp+20
-        nbbTdtrB/3769GpmZmZmj88LlZmZmdk754XKzMzM7J3zQmVmZmb2znmhMjMzM3vn/In9O2g7bafttJ22
+        tJ2203baTttpO+3AcTptp+20nbbTdtpOO/jfT59ezczMzOzxeaEyMzMze+e8UJmZmZm9c16ozMzMzN45
+        L1RmZmZm75w/sX8HbafttJ2203baTjtwnE7baTttp+20nbbTDhyn03baTttpO22n7bQDx+m0nbbTdtpO
+        22k77cBxOm2n7bSdttN22k47cJxO22k7bafttJ220w4cp9N22k7baTttp+20A8fptJ2203baTttpO+3A
+        cTptp+20nbbTdtpOO3CcTttpO22n7bSdttMOHKfTdtpO22k7bafttAPH6bTdVdrt2br9o4Oz54W203ba
+        TttpB9uXzczMzOzxXf+NcaHttLdn6/aPDs6eF9pO22k7bacdOE6n7bSdttN22k7baQeO02k7bafttJ22
         03bageN02k7baTttp+20nXbgOJ2203baTttpO22nHThOp+20nbbTdtpO22kHjtNpO22n7bSdttN22oHj
         dNpO22k7bafttJ124DidttN22k7baTttpx04TqfttJ2203baTttpB47TaTttp+20nbbTdtqB43TaTttp
         O22n7bSdduA4nbbTdtpO22k7bacdOE6n7a7Sbs/W7R8dnD0vtJ2203baTjvYvmxmZmZmj+/6b4wLbae9
@@ -294,7 +297,7 @@
         bafttJ2203bageN02k7baTttp+20nXbgOJ22u0q7PVu3f3Rw9rzQdtpO22k77WD7spmZmZk9vuu/MS60
         nfb2bN3+0cHZ80LbaTttp+20A8fptJ2203baTttpO+3AcTptp+20nbbTdtpOO3CcTttpO22n7bSdttMO
         HKfTdtpO22k7bafttAPH6bSdttN22k7baTvtwHE6bafttJ2203baTjtwnE7baTttp+20nbbTDhyn03ba
-        TttpO22n7bQDx+m0nbbTdtpO22k77ZlPn/4P6STLbP/R1AMAAAAASUVORK5CYII=
+        TttpO22n7bQDx+m0nbbTdtpO22k77ZlPn/4PPv3LbNsJci8AAAAASUVORK5CYII=
 </value>
   </data>
 </root>

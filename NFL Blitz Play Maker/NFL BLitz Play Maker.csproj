@@ -67,6 +67,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Factories\ActionIconPathFactory.cs" />
+    <Compile Include="Helpers\FileStreamHelper.cs" />
     <Compile Include="Helpers\MemoryPackReadWrite.cs" />
     <Compile Include="Models\BlitzActionEnum.cs" />
     <Compile Include="Models\BlitzPlay.cs" />

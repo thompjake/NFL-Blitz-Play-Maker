@@ -31,9 +31,38 @@ namespace NFLBlitzFans.PlayMaker
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.nbpmMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadPlaybookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.picCanvas = new NFLBlitzFans.PlayMaker.Controls.BlitzPlayMaker();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
             this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nbpmMenu});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(931, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // nbpmMenu
+            // 
+            this.nbpmMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadPlaybookToolStripMenuItem});
+            this.nbpmMenu.Name = "nbpmMenu";
+            this.nbpmMenu.Size = new System.Drawing.Size(37, 20);
+            this.nbpmMenu.Text = "File";
+            // 
+            // loadPlaybookToolStripMenuItem
+            // 
+            this.loadPlaybookToolStripMenuItem.Name = "loadPlaybookToolStripMenuItem";
+            this.loadPlaybookToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadPlaybookToolStripMenuItem.Text = "Load Playbook";
+            this.loadPlaybookToolStripMenuItem.Click += new System.EventHandler(this.loadPlaybookToolStripMenuItem_Click);
             // 
             // picCanvas
             // 
@@ -57,18 +86,25 @@ namespace NFLBlitzFans.PlayMaker
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 676);
             this.Controls.Add(this.picCanvas);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "NFL Blitz Play Maker";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private BlitzPlayMaker picCanvas;
-
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem nbpmMenu;
+        private System.Windows.Forms.ToolStripMenuItem loadPlaybookToolStripMenuItem;
     }
 }
 
