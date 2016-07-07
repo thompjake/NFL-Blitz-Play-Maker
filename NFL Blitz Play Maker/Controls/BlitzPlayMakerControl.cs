@@ -18,7 +18,7 @@ namespace NFLBlitzFans.PlayMaker.Controls
         const int grid_gap = 15;
         //
         private int LineOfScrimageYCord { get { return this.Height - grid_gap * 9; } }
-        private int QBXCord { get { return  grid_gap * 14; } }
+        private int QBXCord { get { return grid_gap * 14; } }
         // The "size" of an object for mouse over purposes.
         private const int object_radius = 5;
 
@@ -68,74 +68,32 @@ namespace NFLBlitzFans.PlayMaker.Controls
 
         #region Draw Players
 
-
-        private void SetPlayerDefaults()
+        public void DrawyPlayers(List<BlitzPlayer> players)
         {
-            // Set intial player location (Side 1 fron the play editor)
-            //WR 1
-            int x = 375;
-            int y = this.Height - 4 * grid_gap;
-            SnapToGrid(ref x, ref y);
-            BlitzPlayers.Add(new BlitzPlayer());
-            BlitzPlayers[0].RouteCoordinates.Add(new Point(x, y));
-            BlitzPlayers[0].Actions.Add(BlitzActionEnum.Nothing);
-            BlitzPlayers[0].PlayerType = BlitzPlayerType.WR;
-            // WR 2
-            x = 420;
-            y = this.Height - 8 * grid_gap;
-            SnapToGrid(ref x, ref y);
-            BlitzPlayers.Add(new BlitzPlayer());
-            BlitzPlayers[1].RouteCoordinates.Add(new Point(x, y));
-            BlitzPlayers[1].Actions.Add(BlitzActionEnum.Nothing);
-            BlitzPlayers[1].PlayerType = BlitzPlayerType.WR;
-            // WR 3
-            x = 420;
-            y = this.Height - 6 * grid_gap;
-            SnapToGrid(ref x, ref y);
-            BlitzPlayers.Add(new BlitzPlayer());
-            BlitzPlayers[2].RouteCoordinates.Add(new Point(x, y));
-            BlitzPlayers[2].Actions.Add(BlitzActionEnum.Nothing);
-            BlitzPlayers[2].PlayerType = BlitzPlayerType.WR;
-
-
-            // Left Linemen 1
-            x = 255;
-            y = this.Height - 8 * grid_gap;
-            SnapToGrid(ref x, ref y);
-            BlitzPlayers.Add(new BlitzPlayer());
-            BlitzPlayers[3].RouteCoordinates.Add(new Point(x, y));
-            BlitzPlayers[3].Actions.Add(BlitzActionEnum.Nothing);
-            BlitzPlayers[3].PlayerType = BlitzPlayerType.Linemen;
-
-
-            // Center Linemen 2
-            x = 300;
-            y = this.Height - 8 * grid_gap;
-            SnapToGrid(ref x, ref y);
-            BlitzPlayers.Add(new BlitzPlayer());
-            BlitzPlayers[4].RouteCoordinates.Add(new Point(x, y));
-            BlitzPlayers[4].Actions.Add(BlitzActionEnum.Nothing);
-            BlitzPlayers[4].PlayerType = BlitzPlayerType.Linemen;
-
-            // Center Linemen 2
-            x = 345;
-            y = this.Height - 8 * grid_gap;
-            SnapToGrid(ref x, ref y);
-            BlitzPlayers.Add(new BlitzPlayer());
-            BlitzPlayers[5].RouteCoordinates.Add(new Point(x, y));
-            BlitzPlayers[5].Actions.Add(BlitzActionEnum.Nothing);
-            BlitzPlayers[5].PlayerType = BlitzPlayerType.Linemen;
-
-
-            //  QB
-            x = 300;
-            y = this.Height - 5 * grid_gap;
-            SnapToGrid(ref x, ref y);
-            BlitzPlayers.Add(new BlitzPlayer());
-            BlitzPlayers[6].RouteCoordinates.Add(new Point(x, y));
-            BlitzPlayers[6].Actions.Add(BlitzActionEnum.Nothing);
-            BlitzPlayers[6].PlayerType = BlitzPlayerType.QB;
-
+            List<BlitzPlayer> convertedPlayerList = new List<BlitzPlayer>();
+            foreach (BlitzPlayer player in players)
+            {
+                BlitzPlayer convertedPlayer = new BlitzPlayer();
+                convertedPlayer.PlayerType = player.PlayerType;
+                convertedPlayer.RouteCoordinates = new List<Point>();
+                convertedPlayer.Actions = new List<BlitzActionEnum>();
+                foreach (Point point in player.RouteCoordinates)
+                {
+                    if (point.X == 0 && point.Y == 0)
+                    {
+                        break;
+                    }
+                    convertedPlayer.RouteCoordinates.Add(new Point()
+                    {
+                        Y = this.Height - point.Y * grid_gap,
+                        X = point.X * grid_gap
+                    });
+                    convertedPlayer.Actions.Add(BlitzActionEnum.Nothing);
+                }
+                convertedPlayerList.Add(convertedPlayer);
+            }
+            BlitzPlayers = convertedPlayerList;
+            this.Refresh();
         }
 
 
@@ -471,8 +429,6 @@ namespace NFLBlitzFans.PlayMaker.Controls
         private void OnResize(object sender, EventArgs e)
         {
             MakeBackgroundGrid();
-            if (!BlitzPlayers.Any())
-                SetPlayerDefaults();
             this.Refresh();
         }
 
@@ -501,7 +457,7 @@ namespace NFLBlitzFans.PlayMaker.Controls
 
             // Create the new segment.
             BlitzPlayers[selectedPlayer].RouteCoordinates.Add(NewPt2);
-            BlitzPlayers[selectedPlayer].Actions.Add(BlitzActionEnum.Nothing); 
+            BlitzPlayers[selectedPlayer].Actions.Add(BlitzActionEnum.Nothing);
             // Redraw.
             this.Invalidate();
         }
@@ -522,7 +478,7 @@ namespace NFLBlitzFans.PlayMaker.Controls
             if (BlitzPlayers[selectedPlayer].PlayerType.Equals(BlitzPlayerType.QB))
             {
                 x = QBXCord;
-                if ( y < LineOfScrimageYCord + grid_gap * 2)
+                if (y < LineOfScrimageYCord + grid_gap * 2)
                     y = LineOfScrimageYCord + grid_gap * 2;
             }
 
@@ -592,7 +548,7 @@ namespace NFLBlitzFans.PlayMaker.Controls
             this.Invalidate();
         }
 
-        private void SetPointAction(object sender, EventArgs e,BlitzActionEnum blitzAction)
+        private void SetPointAction(object sender, EventArgs e, BlitzActionEnum blitzAction)
         {
             ContextMenu menu = ((MenuItem)sender).Parent as ContextMenu;
 

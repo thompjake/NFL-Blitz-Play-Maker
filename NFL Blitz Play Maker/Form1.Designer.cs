@@ -34,6 +34,8 @@ namespace NFLBlitzFans.PlayMaker
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.nbpmMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPlaybookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbSelectPlayBook = new System.Windows.Forms.ComboBox();
+            this.cbSelectBlitzPlay = new System.Windows.Forms.ComboBox();
             this.picCanvas = new NFLBlitzFans.PlayMaker.Controls.BlitzPlayMaker();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
@@ -64,6 +66,24 @@ namespace NFLBlitzFans.PlayMaker
             this.loadPlaybookToolStripMenuItem.Text = "Load Playbook";
             this.loadPlaybookToolStripMenuItem.Click += new System.EventHandler(this.loadPlaybookToolStripMenuItem_Click);
             // 
+            // cbSelectPlayBook
+            // 
+            this.cbSelectPlayBook.FormattingEnabled = true;
+            this.cbSelectPlayBook.Location = new System.Drawing.Point(12, 107);
+            this.cbSelectPlayBook.Name = "cbSelectPlayBook";
+            this.cbSelectPlayBook.Size = new System.Drawing.Size(121, 21);
+            this.cbSelectPlayBook.TabIndex = 3;
+            this.cbSelectPlayBook.SelectedIndexChanged += new System.EventHandler(this.cbSelectPlayBook_SelectedIndexChanged);
+            // 
+            // cbSelectBlitzPlay
+            // 
+            this.cbSelectBlitzPlay.FormattingEnabled = true;
+            this.cbSelectBlitzPlay.Location = new System.Drawing.Point(12, 151);
+            this.cbSelectBlitzPlay.Name = "cbSelectBlitzPlay";
+            this.cbSelectBlitzPlay.Size = new System.Drawing.Size(121, 21);
+            this.cbSelectBlitzPlay.TabIndex = 4;
+            this.cbSelectBlitzPlay.SelectedIndexChanged += new System.EventHandler(this.cbSelectBlitzPlay_SelectedIndexChanged);
+            // 
             // picCanvas
             // 
             this.picCanvas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -85,6 +105,8 @@ namespace NFLBlitzFans.PlayMaker
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 676);
+            this.Controls.Add(this.cbSelectBlitzPlay);
+            this.Controls.Add(this.cbSelectPlayBook);
             this.Controls.Add(this.picCanvas);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -105,6 +127,8 @@ namespace NFLBlitzFans.PlayMaker
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem nbpmMenu;
         private System.Windows.Forms.ToolStripMenuItem loadPlaybookToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbSelectPlayBook;
+        private System.Windows.Forms.ComboBox cbSelectBlitzPlay;
     }
 }
 

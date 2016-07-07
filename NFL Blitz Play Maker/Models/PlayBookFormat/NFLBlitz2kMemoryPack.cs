@@ -43,6 +43,54 @@ namespace NFLBlitzFans.PlayMaker.Models.PlayBookFormat
             }
         }
 
+        public override int PlayerActionOffsetFromStart
+        {
+            get
+            {
+                return 3;
+            }
+        }
+
+        public override int PlayerRouteLimit
+        {
+            get
+            {
+                return 8;
+            }
+        }
+
+        public override long PlayerRouteOffset
+        {
+            get
+            {
+                return 12790;
+            }
+        }
+
+        public override int PlayerRouteIncrement
+        {
+            get
+            {
+                return 4;
+            }
+        }
+
+        public override int PlayerXOffsetFromStart
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
+        public override int PlayerYOffsetFromStart
+        {
+            get
+            {
+                return 1;
+            }
+        }
+
         public override int PlayNameIncrement
         {
             get
@@ -56,6 +104,22 @@ namespace NFLBlitzFans.PlayMaker.Models.PlayBookFormat
             get
             {
                 return 12770;
+            }
+        }
+
+        public override BlitzPlayerType[] PlayerTypeOrder
+        {
+            get
+            {
+                return new BlitzPlayerType[] { BlitzPlayerType.Linemen, BlitzPlayerType.Linemen, BlitzPlayerType.Linemen, BlitzPlayerType.QB, BlitzPlayerType.WR, BlitzPlayerType.WR, BlitzPlayerType.WR };
+            }
+        }
+
+        public override int PlaysPerPlayBook
+        {
+            get
+            {
+                return 8;
             }
         }
     }
