@@ -77,18 +77,18 @@ namespace NFLBlitzFans.PlayMaker.Controls
                 convertedPlayer.PlayerType = player.PlayerType;
                 convertedPlayer.RouteCoordinates = new List<Point>();
                 convertedPlayer.Actions = new List<BlitzActionEnum>();
-                foreach (Point point in player.RouteCoordinates)
+                for(int r = 0; r < player.RouteCoordinates.Count(); r++)
                 {
-                    if (point.X == 0 && point.Y == 0)
+                    if (player.RouteCoordinates[r].X == 0 && player.RouteCoordinates[r].Y == 0)
                     {
                         break;
                     }
                     convertedPlayer.RouteCoordinates.Add(new Point()
                     {
-                        Y = this.Height - point.Y * grid_gap,
-                        X = point.X * grid_gap
+                        Y = this.Height - player.RouteCoordinates[r].Y * grid_gap,
+                        X = player.RouteCoordinates[r].X * grid_gap
                     });
-                    convertedPlayer.Actions.Add(BlitzActionEnum.Nothing);
+                    convertedPlayer.Actions.Add(player.Actions[r]);
                 }
                 convertedPlayerList.Add(convertedPlayer);
             }

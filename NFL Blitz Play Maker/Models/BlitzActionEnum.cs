@@ -8,7 +8,7 @@ namespace NFLBlitzFans.PlayMaker
     public enum BlitzActionEnum
     {
         
-        Nothing,
+        Nothing = 0x00,
         Block,
         BlockLeft,
         BlockRight,

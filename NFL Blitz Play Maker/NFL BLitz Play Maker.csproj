@@ -60,6 +60,7 @@
     <Compile Include="Controls\BlitzPlayMakerControl.Designer.cs">
       <DependentUpon>BlitzPlayMakerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Factories\IntToActionFacotry.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

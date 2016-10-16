@@ -41,10 +41,13 @@ namespace NFLBlitzFans.PlayMaker.Helpers
                             int playerX = fs.ReadByte();
                             // Get y cord
                             fs.Position = routeStart + type.PlayerYOffsetFromStart;
-                            int PlayerY = fs.ReadByte();
+                            int playerY = fs.ReadByte();
+                            // Get Action
+                            fs.Position = routeStart + type.PlayerActionOffsetFromStart;
+                            int playerAction = fs.ReadByte();
                             // Create route cord
-                            player.RouteCoordinates.Add(new System.Drawing.Point() { X = playerX, Y = PlayerY });
-                            //player.Actions.Add() create factory to turn byte into action
+                              player.RouteCoordinates.Add(new System.Drawing.Point() { X = playerX, Y = playerY });
+                            player.Actions.Add(IntToActionFactory.CreateBlitzActionEnum(playerAction));
                         }
                         blitzPlay.Players.Add(player);
                     }
