@@ -568,6 +568,32 @@ namespace NFLBlitzFans.PlayMaker.Controls
 
         #endregion // Moving End Point
 
-
+        public List<BlitzPlayer> GetPlayers()
+        {
+            List<BlitzPlayer> convertedPlayerList = new List<BlitzPlayer>();
+            foreach (BlitzPlayer player in this.BlitzPlayers)
+            {
+                BlitzPlayer convertedPlayer = new BlitzPlayer();
+                convertedPlayer.PlayerType = player.PlayerType;
+                convertedPlayer.RouteCoordinates = new List<Point>();
+                convertedPlayer.Actions = new List<BlitzActionEnum>();
+                for (int r = 0; r < player.RouteCoordinates.Count(); r++)
+                {
+                    if (player.RouteCoordinates[r].X == 0 && player.RouteCoordinates[r].Y == 0)
+                    {
+                        break;
+                    }
+                    convertedPlayer.RouteCoordinates.Add(new Point()
+                    {
+                        Y = (this.Height - player.RouteCoordinates[r].Y) / grid_gap,
+                        X = player.RouteCoordinates[r].X / grid_gap
+                    });
+                    convertedPlayer.Actions.Add(player.Actions[r]);
+                }
+                convertedPlayerList.Add(convertedPlayer);
+            }
+            BlitzPlayers = convertedPlayerList;
+            return convertedPlayerList;
+        }
     }
 }

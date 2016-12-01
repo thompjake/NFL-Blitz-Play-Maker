@@ -2,6 +2,7 @@
 using NFLBlitzFans.PlayMaker.Models.PlayBookFormat;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace NFLBlitzFans.PlayMaker.Helpers
                {
                 memoryPackPlayBook.Name = FileStreamHelper.ReadStringTo(fs, type.PlayBookNameOffset, 6);
                 memoryPackPlayBook.PinNumber = FileStreamHelper.ReadStringTo(fs, type.PlayBookPinOffset, 4);
-                memoryPackPlayBook.Plays = new List<BlitzPlay>();
+                memoryPackPlayBook.Plays = new BindingList<BlitzPlay>();
                 for(int z = 0; z < type.PlaysPerPlayBook; z++)
                 { 
                 BlitzPlay blitzPlay = new BlitzPlay();
