@@ -96,7 +96,33 @@ namespace NFLBlitzFans.PlayMaker.Controls
             this.Refresh();
         }
 
-
+        public List<BlitzPlayer> GetRawPlayerData()
+        {
+            List<BlitzPlayer> players = new List<PlayMaker.BlitzPlayer>();
+            // Convert players back to mem pack format
+            foreach (BlitzPlayer player in BlitzPlayers)
+            {
+                BlitzPlayer convertedPlayer = new BlitzPlayer();
+                convertedPlayer.PlayerType = player.PlayerType;
+                convertedPlayer.RouteCoordinates = new List<Point>();
+                convertedPlayer.Actions = new List<BlitzActionEnum>();
+                for (int r = 0; r < player.RouteCoordinates.Count(); r++)
+                {
+                    if (player.RouteCoordinates[r].X == 0 && player.RouteCoordinates[r].Y == 0)
+                    {
+                        break;
+                    }
+                    convertedPlayer.RouteCoordinates.Add(new Point()
+                    {
+                        Y =   (player.RouteCoordinates[r].Y / grid_gap - this.Height) * -1,
+                        X = player.RouteCoordinates[r].X / grid_gap
+                    });
+                    convertedPlayer.Actions.Add(player.Actions[r]);
+                }
+                players.Add(convertedPlayer);
+            }
+            return players;
+        }
 
 
         // Draw the lines.

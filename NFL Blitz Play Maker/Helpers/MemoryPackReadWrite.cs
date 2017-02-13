@@ -12,18 +12,18 @@ namespace NFLBlitzFans.PlayMaker.Helpers
     public class MemoryPackReadWrite
     {
         public PlayBook ReadMemoryPackPlays(string fileLocation,MemoryPack type)
-        {
+        {  
             PlayBook memoryPackPlayBook = new PlayBook();
             //Read Play Book
             using (var fs = new FileStream(fileLocation,FileMode.Open,FileAccess.Read))
                {
-                memoryPackPlayBook.Name = FileStreamHelper.ReadStringTo(fs, type.PlayBookNameOffset, 6);
-                memoryPackPlayBook.PinNumber = FileStreamHelper.ReadStringTo(fs, type.PlayBookPinOffset, 4);
+                memoryPackPlayBook.Name = fs.ReadStringTo(type.PlayBookNameOffset, 6);
+                memoryPackPlayBook.PinNumber = fs.ReadStringTo(type.PlayBookPinOffset, 4);
                 memoryPackPlayBook.Plays = new BindingList<BlitzPlay>();
                 for(int z = 0; z < type.PlaysPerPlayBook; z++)
                 { 
                 BlitzPlay blitzPlay = new BlitzPlay();
-                blitzPlay.Name = FileStreamHelper.ReadStringTo(fs, type.PlayNameOffset + (z*type.PlayNameIncrement),15);
+                blitzPlay.Name = FileStreamExtensionMethods.ReadStringTo(fs, type.PlayNameOffset + (z*type.PlayNameIncrement),15);
                 //for each player get their routes
                 blitzPlay.Players = new List<BlitzPlayer>();
                 int routeCount = 0;
@@ -57,6 +57,49 @@ namespace NFLBlitzFans.PlayMaker.Helpers
             }
 
             return memoryPackPlayBook;
+        }
+
+        public void WriteMemoryPackPlays(string fileLocation, MemoryPack type,PlayBook memoryPackPlayBook)
+        {
+            //Write Play Book
+            using (var fs = new FileStream(fileLocation, FileMode.Open, FileAccess.ReadWrite))
+            {
+                fs.WriteStringToFile(memoryPackPlayBook.Name, type.PlayBookNameOffset);
+                fs.WriteStringToFile(memoryPackPlayBook.PinNumber, type.PlayBookPinOffset);
+                for (int z = 0; z < type.PlaysPerPlayBook; z++)
+                {
+                    BlitzPlay blitzPlay = memoryPackPlayBook.Plays[z];
+                     fs.WriteStringToFile(blitzPlay.Name, type.PlayNameOffset + (z * type.PlayNameIncrement));
+                    int routeCount = 0;
+                    for (int x = 0; x < type.PlayerTypeOrder.Length; x++)
+                    {
+                        BlitzPlayer player = memoryPackPlayBook.Plays[z].Players[x];
+                        // Write each route
+                        player.PlayerType = type.PlayerTypeOrder[x];
+                        for (int y = 0; y < type.PlayerRouteLimit; y++)
+                        {
+                            long routeStart = type.PlayerRouteOffset + (z * type.PlayNameIncrement) + (type.PlayerRouteIncrement * routeCount++);
+                            if (player.RouteCoordinates.Count != 0 && player.RouteCoordinates.Count > y)
+                            {
+                                //get x cord
+                                fs.Position = routeStart + type.PlayerXOffsetFromStart;
+                                fs.WriteByte((byte)player.RouteCoordinates[y].X);
+                                // Get y cord
+                                fs.Position = routeStart + type.PlayerYOffsetFromStart;
+                                fs.WriteByte((byte)player.RouteCoordinates[y].Y);
+                                // Get Action
+                                fs.Position = routeStart + type.PlayerActionOffsetFromStart;
+                                // fs.WriteByte((byte)player.Actions[y]); TODO:
+                            }
+                            else
+                            {
+                                fs.Position = routeStart + type.PlayerXOffsetFromStart;
+                                fs.Write(new byte[] { 0x00, 0x00, 0x00, 0x00 }, 0, 4);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
     }

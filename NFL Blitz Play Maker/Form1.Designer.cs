@@ -40,6 +40,7 @@ namespace NFLBlitzFans.PlayMaker
             this.btnAddPlay = new System.Windows.Forms.Button();
             this.picCanvas = new NFLBlitzFans.PlayMaker.Controls.BlitzPlayMaker();
             this.btnSavePlayChange = new System.Windows.Forms.Button();
+            this.savePlayBookMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +58,8 @@ namespace NFLBlitzFans.PlayMaker
             // nbpmMenu
             // 
             this.nbpmMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadPlaybookToolStripMenuItem});
+            this.loadPlaybookToolStripMenuItem,
+            this.savePlayBookMenu});
             this.nbpmMenu.Name = "nbpmMenu";
             this.nbpmMenu.Size = new System.Drawing.Size(37, 20);
             this.nbpmMenu.Text = "File";
@@ -133,6 +135,13 @@ namespace NFLBlitzFans.PlayMaker
             this.btnSavePlayChange.UseVisualStyleBackColor = true;
             this.btnSavePlayChange.Click += new System.EventHandler(this.btnSavePlayChange_Click);
             // 
+            // savePlayBookMenu
+            // 
+            this.savePlayBookMenu.Name = "savePlayBookMenu";
+            this.savePlayBookMenu.Size = new System.Drawing.Size(152, 22);
+            this.savePlayBookMenu.Text = "Save PlayBook";
+            this.savePlayBookMenu.Click += new System.EventHandler(this.savePlayBookMenu_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +177,7 @@ namespace NFLBlitzFans.PlayMaker
         private System.Windows.Forms.Button btnAddPlaybook;
         private System.Windows.Forms.Button btnAddPlay;
         private System.Windows.Forms.Button btnSavePlayChange;
+        private System.Windows.Forms.ToolStripMenuItem savePlayBookMenu;
     }
 }
 

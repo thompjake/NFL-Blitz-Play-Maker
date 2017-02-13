@@ -16,6 +16,8 @@ namespace NFLBlitzFans.PlayMaker
 {
     public partial class Form1 : Form
     {
+        private string fileLocation;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,12 +28,19 @@ namespace NFLBlitzFans.PlayMaker
 
         private void loadPlaybookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Load MPK
-            MemoryPackReadWrite memoryPackReader = new MemoryPackReadWrite();
-            playBooks = new BindingList<PlayBook>();
-            playBooks.Add(memoryPackReader.ReadMemoryPackPlays(@"C:\Program Files (x86)\Project64 1.6\Save\blitz2k.mpk", new NFLBlitz2kMemoryPack()));
-            cbSelectPlayBook.DataSource = playBooks;
-            cbSelectPlayBook.DisplayMember = "Name";
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.RestoreDirectory = true;
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Load MPK
+                MemoryPackReadWrite memoryPackReader = new MemoryPackReadWrite();
+                playBooks = new BindingList<PlayBook>();
+                fileLocation = fileDialog.FileName;
+                playBooks.Add(memoryPackReader.ReadMemoryPackPlays(fileLocation, new HackedRom()));
+                cbSelectPlayBook.DataSource = playBooks;
+                cbSelectPlayBook.DisplayMember = "Name";
+            }
         }
 
         private void cbSelectPlayBook_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,6 +78,12 @@ namespace NFLBlitzFans.PlayMaker
         private void btnSavePlayChange_Click(object sender, EventArgs e)
         {
             ((BlitzPlay)cbSelectBlitzPlay.SelectedItem).Players = picCanvas.GetPlayers();
+        }
+
+        private void savePlayBookMenu_Click(object sender, EventArgs e)
+        {
+            MemoryPackReadWrite memoryPackReader = new MemoryPackReadWrite();
+            memoryPackReader.WriteMemoryPackPlays(fileLocation, new HackedRom(),playBooks[0]);
         }
     }
 }

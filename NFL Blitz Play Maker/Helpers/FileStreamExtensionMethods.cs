@@ -6,10 +6,10 @@ using System.Text;
 
 namespace NFLBlitzFans.PlayMaker.Helpers
 {
-   public static class FileStreamHelper
+    public static class FileStreamExtensionMethods
     {
 
-        public static string ReadStringTo(FileStream fs, long offset, int length)
+        public static string ReadStringTo(this FileStream fs, long offset, int length)
         {
             List<Byte> listOfBytes = new List<byte>();
             fs.Position = offset;
@@ -19,6 +19,17 @@ namespace NFLBlitzFans.PlayMaker.Helpers
                 listOfBytes.Add(thisByte);
             }
             return System.Text.Encoding.ASCII.GetString(listOfBytes.ToArray());
+        }
+
+        public static void WriteStringToFile(this FileStream fs, string toBeWritten, long offset)
+        {
+            if (string.IsNullOrEmpty(toBeWritten))
+                return;
+                fs.Position = offset;
+                foreach (char letter in toBeWritten)
+                {
+                    fs.WriteByte(Convert.ToByte(letter));
+                }
         }
 
     }
